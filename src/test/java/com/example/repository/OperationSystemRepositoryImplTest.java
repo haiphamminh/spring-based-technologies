@@ -62,19 +62,19 @@ public class OperationSystemRepositoryImplTest {
     @Test
     public void whenFindByNullIDThenReturnEmptyOptional() {
         Optional<OperationSystem> osOpt = testInst.findById(null);
-        assertTrue(osOpt.isEmpty());
+        assertFalse(osOpt.isPresent());
     }
 
     @Test
     public void whenFindByNonExistingIDThenReturnEmptyOptional() {
         Optional<OperationSystem> osOpt = testInst.findById(0);
-        assertTrue(osOpt.isEmpty());
+        assertFalse(osOpt.isPresent());
     }
 
     @Test
     public void whenFindByExistingIDThenReturnOS() {
         Optional<OperationSystem> osOpt = testInst.findById(1);
-        assertFalse(osOpt.isEmpty());
+        assertTrue(osOpt.isPresent());
         OperationSystem os = osOpt.get();
         assertNotNull(os);
         assertTrue(os.getId().equals(1));
