@@ -1,4 +1,4 @@
 jdbc:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://admin:admin123@localhost:5432/example
+  url: jdbc:postgresql://admin:admin123@localhost:5432/db
 
