@@ -4,10 +4,10 @@ import com.example.exception.NotFoundException;
 import com.example.model.OperationSystem;
 import com.example.repository.OperationSystemRepository;
 import com.example.service.impl.OperationSystemServiceImpl;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.Date;
@@ -25,19 +25,14 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.powermock.api.mockito.PowerMockito.doReturn;
 import static org.powermock.api.mockito.PowerMockito.doThrow;
-import static org.powermock.api.mockito.PowerMockito.mock;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(OperationSystemRepository.class)
 public class OperationSystemServiceImplTest {
+    @InjectMocks
     OperationSystemServiceImpl testInst;
-    OperationSystemRepository osRepository;
 
-    @Before
-    public void setup() {
-        osRepository = mock(OperationSystemRepository.class);
-        testInst = new OperationSystemServiceImpl(osRepository);
-    }
+    @Mock
+    OperationSystemRepository osRepository;
 
     @Test
     public void whenGetAllThenReturnAllItems() {
@@ -72,7 +67,7 @@ public class OperationSystemServiceImplTest {
     public void whenFindExistingIdThenReturnValidOS() {
         OperationSystem os = buildEntity(1L, "Windows 8", "2501", "Microsoft", new Date());
         doReturn(Optional.of(os)).when(osRepository)
-                    .findById(1L);
+                                 .findById(1L);
         OperationSystem returnedOS = testInst.getById(1L);
         verifyOS(returnedOS, os);
         verify(osRepository, times(1)).findById(1L);

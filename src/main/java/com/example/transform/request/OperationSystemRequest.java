@@ -1,10 +1,16 @@
 package com.example.transform.request;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Value
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class OperationSystemRequest {
     private Long id;
     private String name;

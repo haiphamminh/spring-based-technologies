@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.example.controller.OperationSystemController.OPERATION_SYSTEM_URL;
+
 @RestController
-@RequestMapping("/v1/operation-systems")
+@RequestMapping(OPERATION_SYSTEM_URL)
 @RequiredArgsConstructor
 public class OperationSystemController {
+    public static final String OPERATION_SYSTEM_URL = "/v1/operation-systems";
+
     private final OperationSystemService osService;
     private final OperationSystemConverter converter;
 

@@ -38,7 +38,7 @@ public class OperationSystemServiceImpl implements OperationSystemService {
     @Override
     public OperationSystem getById(Long id) {
         return osRepository.findById(id)
-                           .orElseThrow(() -> new NotFoundException("Not found os with id" + id));
+                           .orElseThrow(() -> new NotFoundException("Not found OS with id = " + id));
     }
 
     @Override

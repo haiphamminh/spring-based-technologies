@@ -32,4 +32,5 @@ dependencies {
 
     testCompile 'org.powermock:powermock-module-junit4:1.6.4'
     testCompile 'org.powermock:powermock-api-mockito2:2.0.2'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
