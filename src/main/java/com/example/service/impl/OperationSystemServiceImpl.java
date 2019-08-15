@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,13 +25,24 @@ public class OperationSystemServiceImpl implements OperationSystemService {
     }
 
     @Override
-    public Optional<OperationSystem> getById(Integer id) {
-        return Optional.ofNullable(osRepository.findById(id))
-                .orElseThrow(() -> new NotFoundException("Not found os with id" + id));
+    public OperationSystem update(OperationSystem os) {
+        OperationSystem currentOS = getById(os.getId());
+        currentOS.setManufacturer(os.getManufacturer());
+        currentOS.setName(os.getName());
+        currentOS.setReleaseDate(os.getReleaseDate());
+        currentOS.setVersion(os.getVersion());
+        osRepository.save(currentOS);
+        return currentOS;
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public OperationSystem getById(Long id) {
+        return osRepository.findById(id)
+                           .orElseThrow(() -> new NotFoundException("Not found os with id" + id));
+    }
+
+    @Override
+    public void deleteById(Long id) {
         osRepository.deleteById(id);
     }
 }
