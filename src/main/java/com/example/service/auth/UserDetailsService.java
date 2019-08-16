@@ -20,8 +20,6 @@ public class UserDetailsService implements org.springframework.security.core.use
         User user = Optional.ofNullable(userRespositoy.findByUsername(username))
                             .orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                                                                      AuthorityUtils.createAuthorityList(user.getRoles()
-                                                                                                             .toArray(
-                                                                                                                     new String[0])));
+                                                                      AuthorityUtils.createAuthorityList("USER"));
     }
 }

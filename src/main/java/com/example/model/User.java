@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Set;
 
 @Entity
 @Data
@@ -33,6 +32,4 @@ public class User {
     private String username;
     @Column
     private String password;
-    @Column
-    private Set<String> roles;
 }
