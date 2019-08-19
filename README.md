@@ -1,2 +1,2 @@
-# restapi-example
+# spring-based-technologies
 
