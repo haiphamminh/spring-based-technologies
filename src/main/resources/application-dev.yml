@@ -3,6 +3,10 @@ jdbc:
   url: jdbc:postgresql://admin:admin123@localhost:5432/db
 
 spring:
+  security:
+    oauth2:
+      resource:
+        filter-order: 3
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -20,3 +24,11 @@ spring:
 server:
   servlet:
     context-path: /api
+
+security:
+  jwt:
+    key-store: classpath:mykeystore.jks
+    key-store-password: changeme
+    key-pair-alias: servercert
+    key-pair-password: letmein
+    public-key: classpath:public.txt
