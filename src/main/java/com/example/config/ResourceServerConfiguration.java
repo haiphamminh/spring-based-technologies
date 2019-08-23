@@ -31,7 +31,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
             .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
             .and()
             .authorizeRequests()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             .and()
                 .headers().frameOptions().disable();
         // @formatter:on
